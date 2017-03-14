@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+
+
+
+
+
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+       android:id="@+id/inputemail"
+
+        >
+
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:hint="Email"
+
+            android:imeActionId="@+id/login"
+            android:imeOptions="actionUnspecified"
+
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+
+
+            android:layout_centerHorizontal="true" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:id="@+id/inputname"
+        android:layout_below="@+id/inputemail"
+
+        >
+
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:hint="Name"
+
+            android:imeActionId="@+id/login"
+            android:imeOptions="actionUnspecified"
+
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+
+
+            android:layout_centerHorizontal="true" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:id="@+id/inputphoneno"
+        android:layout_below="@+id/inputname"
+
+        >
+
+
+        <EditText
+            android:id="@+id/phoneno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:hint="Phone No"
+            android:imeActionId="@+id/login"
+            android:imeOptions="actionUnspecified"
+            android:inputType="phone"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+
+
+            android:layout_centerHorizontal="true" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+
+        android:layout_below="@+id/inputphoneno"
+
+        >
+
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:hint="Password"
+            android:imeActionId="@+id/login"
+            android:imeOptions="actionUnspecified"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+
+
+            android:layout_centerHorizontal="true" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="59dp"
+        android:id="@+id/progressBarregister" />
+
+    <Button
+        android:text="Register"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/registerbutton"
+        android:background="@color/colorPrimary"
+        android:layout_above="@+id/progressBarregister"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp" />
+
+
+</RelativeLayout>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/green"
+    android:layout_height="match_parent">
+
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:paddingTop="10dp"
+    android:id="@+id/head"
+    android:background="@color/green"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/logo"
+        android:text="DigiCard  "
+        android:textSize="30sp"
+        android:layout_marginLeft="140dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/white"
+
+        />
+
+
+    ></LinearLayout>
+
+
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/head"
+        android:layout_marginTop="10dp"
+        android:id="@+id/line1"
+        android:background="@android:color/white"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:id="@+id/head2"
+        android:background="@color/white"
+        android:layout_alignTop="@+id/line1"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_credit_card_black_24dp"
+            android:id="@+id/imageView"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:paddingTop="10dp"
+            android:text="Pizza Hut"
+            android:textColor="@color/black"
+            android:id="@+id/cardname"
+            android:layout_below="@+id/line1"
+            />
+
+
+        <ImageView
+            android:id="@+id/ruppeicon"
+            android:layout_width="wrap_content"
+            android:paddingTop="7dp"
+            android:paddingLeft="180dp"
+            android:src="@drawable/rupee"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line1"
+            android:layout_toRightOf="@+id/head"
+            android:layout_toEndOf="@+id/head" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="600"
+            android:textColor="@color/black"
+            android:id="@+id/bill"
+            android:layout_below="@+id/line1"
+            android:layout_toRightOf="@+id/ruppeicon"
+            android:layout_toEndOf="@+id/ruppeicon" />
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+    <Button
+        android:background="@drawable/transparent_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="3dp"
+        android:text="CHANGE CARD"
+android:textSize="8sp"
+        android:textColor="@color/black"
+        android:id="@+id/changecard"
+        android:layout_alignParentTop="true"
+
+        android:layout_alignBottom="@+id/head" />
+
+
+    <Button
+        android:layout_width="fill_parent"
+        android:id="@+id/pay"
+        android:background="@color/white"
+        android:text="Pay"
+        android:layout_height="150dp"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/head2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/pay"
+
+        android:id="@+id/line2"
+        android:background="@color/green"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/line2"
+        android:background="@color/white"
+        android:layout_height="fill_parent" />
+
+
+</RelativeLayout>
