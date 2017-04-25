@@ -5,7 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -51,7 +54,7 @@ public class AdsRecylerviewAdapter extends RecyclerView.Adapter<AdsRecylerviewAd
 
         holder.DescTextview.setText(String.valueOf(getDataAdapter1.getDesc()));
 
-
+        Picasso.with(context).load(getDataAdapter1.getUrl()).resize(120, 60).into(holder.AdimageView);
     }
 
     @Override
@@ -66,6 +69,7 @@ public class AdsRecylerviewAdapter extends RecyclerView.Adapter<AdsRecylerviewAd
         public TextView IdTextView;
         public TextView TitleTextView;
         public TextView DescTextview;
+        public ImageView AdimageView;
 
 
         public ViewHolder(View itemView) {
@@ -76,6 +80,7 @@ public class AdsRecylerviewAdapter extends RecyclerView.Adapter<AdsRecylerviewAd
             IdTextView = (TextView) itemView.findViewById(R.id.id);
             TitleTextView = (TextView) itemView.findViewById(R.id.title);
             DescTextview = (TextView) itemView.findViewById(R.id.desc);
+            AdimageView=(ImageView)itemView.findViewById(R.id.adimage);
 
 
         }

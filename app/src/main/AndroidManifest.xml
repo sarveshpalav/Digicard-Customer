@@ -11,6 +11,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -23,6 +25,10 @@
         <activity android:name=".QrScanner"></activity>
         <activity android:name=".PinActivity"></activity>
         <activity android:name=".TransactionSucessful"></activity>
+        <activity android:name=".DialogList"
+            android:theme="@style/Theme.AppCompat.Dialog">
+
+        </activity>
     </application>
 
 </manifest>

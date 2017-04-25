@@ -130,6 +130,8 @@ public class AdListFragment extends Fragment {
 
                 GetDataAdapter2.setDesc(json.getString("Ad_description"));
 
+                GetDataAdapter2.setUrl(json.getString("Ad_image"));
+
 
 
             } catch (JSONException e) {

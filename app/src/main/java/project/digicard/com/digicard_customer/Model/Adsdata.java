@@ -8,6 +8,15 @@ public class Adsdata {
     int Id;
     String title;
     String desc;
+    String url;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public int getId() {
         return Id;

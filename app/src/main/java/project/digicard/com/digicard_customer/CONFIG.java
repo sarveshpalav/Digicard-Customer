@@ -15,6 +15,7 @@ public class CONFIG {
         public static String PUT_PIN="http://digicardservices.in/Android/buyer_putting_pin.php";
         public static String GET_ADS="http://digicardservices.in/Android/getting_advertisement.php";
         public static String GET_LOGS="http://digicardservices.in/Android/getting_logs.php";
+        public static String GET_CARDBALANCE="http://digicardservices.in/Android/select_card.php";
 
 
 
