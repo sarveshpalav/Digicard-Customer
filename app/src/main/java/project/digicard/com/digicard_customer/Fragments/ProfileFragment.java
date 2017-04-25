@@ -1,4 +1,4 @@
-package project.digicard.com.digicard_customer;
+package project.digicard.com.digicard_customer.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,11 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import static project.digicard.com.digicard_customer.CONFIG.MyPREFERENCES;
-import static project.digicard.com.digicard_customer.CONFIG.sharedprefcustemail;
-import static project.digicard.com.digicard_customer.CONFIG.sharedprefcustid;
-import static project.digicard.com.digicard_customer.CONFIG.sharedprefcustname;
-import static project.digicard.com.digicard_customer.CONFIG.sharedprefcustphone;
+import project.digicard.com.digicard_customer.R;
+
+import static project.digicard.com.digicard_customer.Model.CONFIG.MyPREFERENCES;
+import static project.digicard.com.digicard_customer.Model.CONFIG.sharedprefcustemail;
+import static project.digicard.com.digicard_customer.Model.CONFIG.sharedprefcustid;
+import static project.digicard.com.digicard_customer.Model.CONFIG.sharedprefcustname;
+import static project.digicard.com.digicard_customer.Model.CONFIG.sharedprefcustphone;
 
 /**
  * Created by sarveshpalav on 24/12/16.

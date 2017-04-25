@@ -1,4 +1,4 @@
-package project.digicard.com.digicard_customer;
+package project.digicard.com.digicard_customer.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import project.digicard.com.digicard_customer.Model.Adsdata;
-import project.digicard.com.digicard_customer.Model.Carddata;
+import project.digicard.com.digicard_customer.R;
 
 /**
  * Created by sarveshpalav on 24/12/16.

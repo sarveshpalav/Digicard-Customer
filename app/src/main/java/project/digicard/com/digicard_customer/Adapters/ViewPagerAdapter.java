@@ -1,4 +1,4 @@
-package project.digicard.com.digicard_customer;
+package project.digicard.com.digicard_customer.Adapters;
 
 import android.content.Context;
 import android.os.Parcelable;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+
+import project.digicard.com.digicard_customer.R;
 
 /**
  * Created by sarveshpalav on 02/03/17.

@@ -1,4 +1,4 @@
-package project.digicard.com.digicard_customer;
+package project.digicard.com.digicard_customer.Model;
 
 /**
  * Created by sarveshpalav on 15/03/17.

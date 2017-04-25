@@ -5,6 +5,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import project.digicard.com.digicard_customer.Adapters.TabsPagerAdapterLoggedIn;
+
 /**
  * Created by Sarvesh on 21-12-2016.
  */

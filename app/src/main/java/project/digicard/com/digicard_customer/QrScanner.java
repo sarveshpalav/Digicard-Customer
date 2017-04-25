@@ -7,13 +7,10 @@ import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.zxing.Result;
@@ -25,6 +22,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
+import project.digicard.com.digicard_customer.Model.CONFIG;
+import project.digicard.com.digicard_customer.Network.RequestHandler;
 
 /**
  * Created by sarveshpalav on 24/12/16.

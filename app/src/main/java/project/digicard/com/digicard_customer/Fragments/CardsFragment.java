@@ -1,4 +1,4 @@
-package project.digicard.com.digicard_customer;
+package project.digicard.com.digicard_customer.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -21,10 +21,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import project.digicard.com.digicard_customer.Adapters.CardsRecylerviewAdapter;
+import project.digicard.com.digicard_customer.Model.CONFIG;
 import project.digicard.com.digicard_customer.Model.Carddata;
+import project.digicard.com.digicard_customer.Network.RequestHandler;
+import project.digicard.com.digicard_customer.R;
 
-import static project.digicard.com.digicard_customer.CONFIG.MyPREFERENCES;
-import static project.digicard.com.digicard_customer.CONFIG.sharedprefcustid;
+import static project.digicard.com.digicard_customer.Model.CONFIG.MyPREFERENCES;
+import static project.digicard.com.digicard_customer.Model.CONFIG.sharedprefcustid;
 
 /**
  * Created by sarveshpalav on 24/12/16.

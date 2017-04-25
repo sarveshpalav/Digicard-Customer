@@ -1,4 +1,4 @@
-package project.digicard.com.digicard_customer;
+package project.digicard.com.digicard_customer.Network;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,8 +10,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-import static project.digicard.com.digicard_customer.CONFIG.MyPREFERENCES;
-import static project.digicard.com.digicard_customer.CONFIG.sharedprefcustemail;
+import project.digicard.com.digicard_customer.Model.CONFIG;
+
+import static project.digicard.com.digicard_customer.Model.CONFIG.MyPREFERENCES;
 
 /**
  * Created by sarveshpalav on 24/12/16.

@@ -1,4 +1,4 @@
-package project.digicard.com.digicard_customer;
+package project.digicard.com.digicard_customer.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

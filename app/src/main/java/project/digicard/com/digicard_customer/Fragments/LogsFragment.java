@@ -1,10 +1,9 @@
-package project.digicard.com.digicard_customer;
+package project.digicard.com.digicard_customer.Fragments;
 
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,9 +20,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import project.digicard.com.digicard_customer.Model.Adsdata;
-import project.digicard.com.digicard_customer.Model.Carddata;
+import project.digicard.com.digicard_customer.Adapters.LogsRecylerviewAdapter;
+import project.digicard.com.digicard_customer.Model.CONFIG;
 import project.digicard.com.digicard_customer.Model.Logsdata;
+import project.digicard.com.digicard_customer.Network.RequestHandler;
+import project.digicard.com.digicard_customer.R;
 
 /**
  * Created by sarveshpalav on 13/02/17.

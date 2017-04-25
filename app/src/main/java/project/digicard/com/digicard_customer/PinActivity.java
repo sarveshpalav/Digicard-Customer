@@ -16,6 +16,9 @@ import android.widget.Toast;
 
 import java.util.HashMap;
 
+import project.digicard.com.digicard_customer.Model.CONFIG;
+import project.digicard.com.digicard_customer.Network.RequestHandler;
+
 /**
  * Created by sarveshpalav on 25/12/16.
  */

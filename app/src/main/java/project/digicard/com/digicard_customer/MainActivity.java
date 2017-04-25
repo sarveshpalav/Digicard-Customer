@@ -7,11 +7,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
 
-import static project.digicard.com.digicard_customer.CONFIG.MyPREFERENCES;
-import static project.digicard.com.digicard_customer.CONFIG.sharedprfisloggedin;
+import project.digicard.com.digicard_customer.Adapters.TabsPagerAdapter;
+
+import static project.digicard.com.digicard_customer.Model.CONFIG.MyPREFERENCES;
+import static project.digicard.com.digicard_customer.Model.CONFIG.sharedprfisloggedin;
 
 public class MainActivity extends AppCompatActivity {
 

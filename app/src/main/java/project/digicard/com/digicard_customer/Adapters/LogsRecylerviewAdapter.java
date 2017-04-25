@@ -1,4 +1,4 @@
-package project.digicard.com.digicard_customer;
+package project.digicard.com.digicard_customer.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import project.digicard.com.digicard_customer.Model.Adsdata;
 import project.digicard.com.digicard_customer.Model.Logsdata;
+import project.digicard.com.digicard_customer.R;
 
 /**
  * Created by sarveshpalav on 13/02/17.
