@@ -7,11 +7,17 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import net.cachapa.expandablelayout.ExpandableLayout;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -23,6 +29,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
+import project.digicard.com.digicard_customer.Adapters.MyCustomAnimation;
 import project.digicard.com.digicard_customer.Adapters.ViewPagerAdapter;
 import project.digicard.com.digicard_customer.CardEvent;
 import project.digicard.com.digicard_customer.DialogList;
@@ -39,20 +46,23 @@ import static project.digicard.com.digicard_customer.Model.CONFIG.sharedprefcust
  */
 
 public class HomePageFragment extends Fragment {
-Button pay;
-    TextView Logo,Balance,cardname;
+    Button pay;
+    TextView Logo, Balance, cardname;
     Button ChangeCard;
     JSONObject jsonObject;
     SharedPreferences sharedPreferences;
     String balance;
+    RelativeLayout expandablecardLayout;
     AutoScrollViewPager mPager;
-    private static final Integer[] IMAGES= {R.drawable.pizza,R.drawable.pizza2,R.drawable.pizza3};
+    ViewPager CardselecterPager;
+    private static final Integer[] IMAGES = {R.drawable.pizza, R.drawable.pizza2, R.drawable.pizza3};
     private ArrayList<Integer> ImagesArray = new ArrayList<Integer>();
+     int height;
+
     @Override
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 
 
         View rootView = inflater.inflate(R.layout.homepage_fragment, container, false);
@@ -62,35 +72,38 @@ Button pay;
         }
 
 
-cardname =(TextView)rootView.findViewById(R.id.cardname);
-Balance = (TextView)rootView.findViewById(R.id.balance);
-pay = (Button)rootView.findViewById(R.id.pay);
-        Logo =(TextView)rootView.findViewById(R.id.logo);
-        Typeface typeface= Typeface.createFromAsset(getActivity().getAssets(), "cursive.ttf");
+        expandablecardLayout = (RelativeLayout) rootView.findViewById(R.id.expandablecardselecter);
+
+        cardname = (TextView) rootView.findViewById(R.id.cardname);
+        Balance = (TextView) rootView.findViewById(R.id.balance);
+        pay = (Button) rootView.findViewById(R.id.pay);
+        Logo = (TextView) rootView.findViewById(R.id.logo);
+        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "cursive.ttf");
         Logo.setTypeface(typeface);
         pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(),QrScanner.class));
+                startActivity(new Intent(getActivity(), QrScanner.class));
             }
         });
 
         getCardData("100");
 
-        ChangeCard = (Button)rootView.findViewById(R.id.changecard);
-
+        ChangeCard = (Button) rootView.findViewById(R.id.changecard);
+        expandablecardLayout.setVisibility(View.GONE);
         ChangeCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-startActivity(new Intent(getActivity(),DialogList.class));
+                startActivity(new Intent(getActivity(), DialogList.class));
+
             }
         });
 
-        for(int i=0;i<IMAGES.length;i++)
+        for (int i = 0; i < IMAGES.length; i++)
             ImagesArray.add(IMAGES[i]);
 
-        mPager = (AutoScrollViewPager)rootView. findViewById(R.id.pager);
-        mPager.setAdapter(new ViewPagerAdapter(getActivity(),ImagesArray));
+        mPager = (AutoScrollViewPager) rootView.findViewById(R.id.pager);
+        mPager.setAdapter(new ViewPagerAdapter(getActivity(), ImagesArray));
         mPager.setInterval(3000);
         mPager.startAutoScroll();
 
@@ -98,23 +111,14 @@ startActivity(new Intent(getActivity(),DialogList.class));
     }
 
 
-
-
-
-
-
-
-
-
-        @Override
+    @Override
     public void onPause() {
         super.onPause();
         EventBus.getDefault().register(this);
     }
 
     @Override
-    public void onDestroy()
-    {
+    public void onDestroy() {
         super.onPause();
         EventBus.getDefault().unregister(this);
     }
@@ -124,18 +128,17 @@ startActivity(new Intent(getActivity(),DialogList.class));
         super.onPause();
         EventBus.getDefault().unregister(this);
     }
-@Subscribe
-    public void onEvent(CardEvent event){
+
+    @Subscribe
+    public void onEvent(CardEvent event) {
         // your implementation
-    cardname.setText(event.getCardname());
-getCardData(event.getCardid().toString());
+        cardname.setText(event.getCardname());
+        getCardData(event.getCardid().toString());
     }
 
 
-
-    public void  getCardData(String cardid)
-    {
-        class  getCards extends AsyncTask<String,String,String>
+    public void getCardData(String cardid) {
+        class getCards extends AsyncTask<String, String, String>
 
         {
             @Override
@@ -147,7 +150,7 @@ getCardData(event.getCardid().toString());
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
-                System.out.println("abc"+s);
+                System.out.println("abc" + s);
 
 
             }
@@ -157,13 +160,13 @@ getCardData(event.getCardid().toString());
 
                 RequestHandler ruc = new RequestHandler();
 
-                HashMap<String, String> data = new HashMap<String,String>();
-                data.put("B_id",params[0]);
-                data.put("Card_id",params[1]);
+                HashMap<String, String> data = new HashMap<String, String>();
+                data.put("B_id", params[0]);
+                data.put("Card_id", params[1]);
 
-                String result =  ruc.sendPostRequest(CONFIG.GET_CARDBALANCE,data);
+                String result = ruc.sendPostRequest(CONFIG.GET_CARDBALANCE, data);
                 try {
-                    jsonObject =new JSONObject(result);
+                    jsonObject = new JSONObject(result);
                     JSONArray contacts = jsonObject.getJSONArray("result");
                     JSON_PARSE_DATA_AFTER_WEBCALL(contacts);
                 } catch (JSONException e) {
@@ -171,19 +174,18 @@ getCardData(event.getCardid().toString());
                 }
 
 
-                return result ;
+                return result;
             }
         }
 
         getCards g = new getCards();
-        g.execute(sharedPreferences.getString(sharedprefcustid,""),cardid);
+        g.execute(sharedPreferences.getString(sharedprefcustid, ""), cardid);
     }
 
 
-    public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array){
+    public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array) {
 
-        for(int i = 0; i<array.length(); i++) {
-
+        for (int i = 0; i < array.length(); i++) {
 
 
             JSONObject json = null;
@@ -191,11 +193,7 @@ getCardData(event.getCardid().toString());
                 json = array.getJSONObject(i);
 
                 balance = json.getString("Balance");
-                System.out.println("wow"+balance);
-
-
-
-
+                System.out.println("wow" + balance);
 
 
             } catch (JSONException e) {
@@ -206,12 +204,10 @@ getCardData(event.getCardid().toString());
         }
 
 
-
-
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-Balance.setText(balance);
+                Balance.setText(balance);
             }
         });
 

@@ -28,9 +28,10 @@ public class LoggedInActivity extends AppCompatActivity {
         tabLayout = (TabLayout)findViewById(R.id.loggedintab_layout);
         viewPager =(ViewPager)findViewById(R.id.loggedinviewpager);
 
-
+        tabLayout.setTabTextColors(R.color.white,R.color.white);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

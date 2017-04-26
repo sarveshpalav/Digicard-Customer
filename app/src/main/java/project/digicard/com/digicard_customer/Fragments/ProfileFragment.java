@@ -40,7 +40,7 @@ TextView email,id,phoneno,name;
 
 
         email.setText(sharedPreferences.getString(sharedprefcustemail,""));
-        id.setText(sharedPreferences.getString(sharedprefcustid,""));
+//        id.setText(sharedPreferences.getString(sharedprefcustid,""));
         phoneno.setText(sharedPreferences.getString(sharedprefcustphone,""));
         name.setText(sharedPreferences.getString(sharedprefcustname,""));
 

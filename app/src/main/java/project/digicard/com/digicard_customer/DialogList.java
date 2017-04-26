@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import project.digicard.com.digicard_customer.Adapters.CardsRecylerviewAdapter;
+import project.digicard.com.digicard_customer.Adapters.ChangeCardAdapter;
 import project.digicard.com.digicard_customer.Model.CONFIG;
 import project.digicard.com.digicard_customer.Model.Carddata;
 import project.digicard.com.digicard_customer.Adapters.RecylerItemClick;
@@ -32,7 +33,7 @@ import static project.digicard.com.digicard_customer.Model.CONFIG.sharedprefcust
 /**
  * Created by sarveshpalav on 15/03/17.
  */
-public class DialogList extends AppCompatActivity {
+public  class DialogList extends AppCompatActivity {
 
     RecyclerView.LayoutManager recyclerViewlayoutManager;
     RecyclerView recyclerView;
@@ -151,7 +152,7 @@ public class DialogList extends AppCompatActivity {
             GetDataAdapter1.add(GetDataAdapter2);
         }
 
-        final CardsRecylerviewAdapter cardsRecylerviewAdapter = new CardsRecylerviewAdapter(GetDataAdapter1, this);
+        final ChangeCardAdapter cardsRecylerviewAdapter = new ChangeCardAdapter(GetDataAdapter1, this);
 
 
         runOnUiThread(new Runnable() {
