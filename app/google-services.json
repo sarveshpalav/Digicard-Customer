@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "835598596553",
+    "firebase_url": "https://digicard-a87bd.firebaseio.com",
+    "project_id": "digicard-a87bd",
+    "storage_bucket": "digicard-a87bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835598596553:android:d185320b517aa9af",
+        "android_client_info": {
+          "package_name": "project.digicard.com.digicard_customer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835598596553-i5ahvqj977acpm07badit21f70mok938.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaWUEfR2-UNShD_pXrKvtdySDCJ_PPUP8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

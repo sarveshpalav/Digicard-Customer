@@ -33,7 +33,7 @@ public class ChangeCardAdapter extends RecyclerView.Adapter<ChangeCardAdapter.Vi
 
     @Override
     public ChangeCardAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.chnagecarditem, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.changecarditem, parent, false);
 
         ChangeCardAdapter.ViewHolder viewHolder = new ChangeCardAdapter.ViewHolder(v);
 

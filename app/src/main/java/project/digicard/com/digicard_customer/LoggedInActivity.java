@@ -4,6 +4,11 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import project.digicard.com.digicard_customer.Adapters.TabsPagerAdapterLoggedIn;
 
@@ -31,6 +36,7 @@ public class LoggedInActivity extends AppCompatActivity {
         tabLayout.setTabTextColors(R.color.white,R.color.white);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+        subscribeToPushService();
 
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -51,6 +57,19 @@ public class LoggedInActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void subscribeToPushService() {
+        FirebaseMessaging.getInstance().subscribeToTopic("global");
+
+        Log.d("AndroidBash", "Notifications Enabled");
+        Toast.makeText(LoggedInActivity.this, "Notifications Enabled", Toast.LENGTH_SHORT).show();
+
+        String token = FirebaseInstanceId.getInstance().getToken();
+
+        // Log and toast
+        //  Log.d("AndroidBash", token);
+        //   Toast.makeText(Home.this, token, Toast.LENGTH_SHORT).show();
     }
 
 }
