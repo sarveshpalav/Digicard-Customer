@@ -30,6 +30,7 @@
 
         </activity>
         <activity android:name=".AdDisplay"></activity>
+        <activity android:name=".CardSearchActivity"></activity>
 
         <service android:name="project.digicard.com.digicard_customer.Services.MyFirebaseMessagingService">
             <intent-filter>

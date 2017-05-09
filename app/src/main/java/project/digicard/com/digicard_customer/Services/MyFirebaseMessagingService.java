@@ -74,12 +74,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
         //message will contain the Push Message
         String message = remoteMessage.getData().get("message");
+        String message2 = "";
 
         //imageUri will contain URL of the image to be displayed with Notification
         String imageUri = null;
         try {
             imageUri = a.getString("image");
             message = a.getString("title");
+            message2 = a.getString("message");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -92,7 +94,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Log.d(TAG, "Url: " + imageUri);
 
 
-        sendNotification(message, bitmap,imageUri);
+        sendNotification(message,message2, bitmap,imageUri);
 
     }
 
@@ -114,14 +116,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
     }
 
-        private void sendNotification(String messageBody, Bitmap image, String ImageUrl) {
+        private void sendNotification(String messageBody,String message2, Bitmap image, String ImageUrl) {
             Intent intent = new Intent(this,AdDisplay.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         //    intent.putExtra("AdDesc", messageBody);
           //  intent.putExtra("AdTitle",messageBody);
         //    intent.putExtra("AdImageUrl",ImageUrl);
             AdTitle = messageBody;
-            AdDesc = messageBody;
+            AdDesc = message2;
             AdImageurl = ImageUrl;
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                     PendingIntent.FLAG_ONE_SHOT);

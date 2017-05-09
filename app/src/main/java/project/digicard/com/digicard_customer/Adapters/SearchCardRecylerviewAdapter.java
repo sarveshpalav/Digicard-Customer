@@ -1,23 +1,23 @@
 package project.digicard.com.digicard_customer.Adapters;
 
+import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,16 +31,16 @@ import static project.digicard.com.digicard_customer.Model.CONFIG.MyPREFERENCES;
 import static project.digicard.com.digicard_customer.Model.CONFIG.sharedprefcustid;
 
 /**
- * Created by sarveshpalav on 24/12/16.
+ * Created by sarveshpalav on 03/05/17.
  */
-public class CardsRecylerviewAdapter extends RecyclerView.Adapter<CardsRecylerviewAdapter.ViewHolder> {
+public class SearchCardRecylerviewAdapter  extends RecyclerView.Adapter<SearchCardRecylerviewAdapter  .ViewHolder> {
 
     Context context;
 
     List<Carddata> getCardDataAdapter;
     SharedPreferences sharedPreferences;
 
-    public CardsRecylerviewAdapter(List<Carddata> getDataAdapter, Context context) {
+    public SearchCardRecylerviewAdapter(List<Carddata> getDataAdapter, Context context) {
 
         super();
 
@@ -51,7 +51,7 @@ public class CardsRecylerviewAdapter extends RecyclerView.Adapter<CardsRecylervi
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardrecylerview_items, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.searchcardrecylerview_items, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(v);
 
@@ -89,8 +89,6 @@ public class CardsRecylerviewAdapter extends RecyclerView.Adapter<CardsRecylervi
         public RelativeLayout layout;
 
 
-
-
         public ViewHolder(View itemView) {
 
             super(itemView);
@@ -109,15 +107,14 @@ public class CardsRecylerviewAdapter extends RecyclerView.Adapter<CardsRecylervi
 
                     sharedPreferences = context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                     sharedPreferences.getString(sharedprefcustid, "");
-                  //  EventBus.getDefault().post(new EventsModel("cardupdate"));
-                     Unsubsribecall(IdTextView.getText().toString().trim(), sharedPreferences.getString(sharedprefcustid, ""),BalanceTextview.getText().toString().trim());
+                    //  EventBus.getDefault().post(new EventsModel("cardupdate"));
+                    subsribecall(IdTextView.getText().toString().trim(), sharedPreferences.getString(sharedprefcustid, ""));
 
                 }
             });
         }
 
-
-        public void  Unsubsribecall(String card_id,String  B_id,String Balance   )
+        public void  subsribecall(String card_id,String  B_id  )
         {
             class  Unsubscribe extends AsyncTask<String,String,String>
 
@@ -132,13 +129,14 @@ public class CardsRecylerviewAdapter extends RecyclerView.Adapter<CardsRecylervi
                 protected void onPostExecute(String s) {
                     super.onPostExecute(s);
 
-
+                    Toast.makeText(context.getApplicationContext(),s,Toast.LENGTH_LONG).show();
                     if(s.equals("1"))
                     {
-                        EventBus.getDefault().post(new EventsModel("cardupdate"));
+                        Toast.makeText(context.getApplicationContext(),"Successfully Subscribed",Toast.LENGTH_LONG).show();
+                        ((Activity)context).finish();
                     }else
                     {
-                        Toast.makeText(context,"Your Balance Should be Zero",Toast.LENGTH_LONG).show();
+                        Toast.makeText(context,"Could Not Be Subscribed",Toast.LENGTH_LONG).show();
                     }
 
 
@@ -152,9 +150,9 @@ public class CardsRecylerviewAdapter extends RecyclerView.Adapter<CardsRecylervi
                     HashMap<String, String> data = new HashMap<String,String>();
                     data.put("Card_id",params[0]);
                     data.put("B_id",params[1]);
-                    data.put("Balance",params[2]);
 
-                    String result =  ruc.sendPostRequest(CONFIG.UNSUBSCRIBE_CARD,data);
+
+                    String result =  ruc.sendPostRequest(CONFIG.SUBSCRIBE_CARD,data);
 
 
 
@@ -163,13 +161,15 @@ public class CardsRecylerviewAdapter extends RecyclerView.Adapter<CardsRecylervi
             }
 
             Unsubscribe g = new Unsubscribe();
-            g.execute(card_id,B_id,Balance);
+            g.execute(card_id,B_id);
         }
 
 
 
 
 
-        }
+    }
 
-}
+
+    }
+

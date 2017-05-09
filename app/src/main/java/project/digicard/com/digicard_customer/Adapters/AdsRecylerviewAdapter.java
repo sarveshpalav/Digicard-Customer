@@ -1,6 +1,7 @@
 package project.digicard.com.digicard_customer.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +13,10 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import project.digicard.com.digicard_customer.AdDisplay;
 import project.digicard.com.digicard_customer.Model.Adsdata;
 import project.digicard.com.digicard_customer.R;
+import project.digicard.com.digicard_customer.Services.MyFirebaseMessagingService;
 
 /**
  * Created by sarveshpalav on 24/12/16.
@@ -44,9 +47,9 @@ public class AdsRecylerviewAdapter extends RecyclerView.Adapter<AdsRecylerviewAd
 
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
 
-        Adsdata getDataAdapter1 = getCardDataAdapter.get(position);
+        final Adsdata getDataAdapter1 = getCardDataAdapter.get(position);
 
         holder.TitleTextView.setText(String.valueOf(getDataAdapter1.getTitle()));
 
@@ -55,6 +58,17 @@ public class AdsRecylerviewAdapter extends RecyclerView.Adapter<AdsRecylerviewAd
         holder.DescTextview.setText(String.valueOf(getDataAdapter1.getDesc()));
 
         Picasso.with(context).load(getDataAdapter1.getUrl()).resize(120, 60).into(holder.AdimageView);
+
+        holder.AdimageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyFirebaseMessagingService.AdTitle = holder.TitleTextView.getText().toString();
+                MyFirebaseMessagingService.AdDesc = holder.DescTextview.getText().toString();
+                MyFirebaseMessagingService.AdImageurl = getDataAdapter1.getUrl();
+                context.startActivity(new Intent(context, AdDisplay.class));
+
+            }
+        });
     }
 
     @Override
@@ -81,6 +95,8 @@ public class AdsRecylerviewAdapter extends RecyclerView.Adapter<AdsRecylerviewAd
             TitleTextView = (TextView) itemView.findViewById(R.id.title);
             DescTextview = (TextView) itemView.findViewById(R.id.desc);
             AdimageView=(ImageView)itemView.findViewById(R.id.adimage);
+
+
 
 
         }

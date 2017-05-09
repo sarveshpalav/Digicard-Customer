@@ -16,6 +16,9 @@ public class CONFIG {
         public static String GET_ADS="http://digicardservices.in/Android/getting_advertisement.php";
         public static String GET_LOGS="http://digicardservices.in/Android/getting_logs.php";
         public static String GET_CARDBALANCE="http://digicardservices.in/Android/select_card.php";
+        public static String UNSUBSCRIBE_CARD="http://digicardservices.in/Android/unsubscribe.php";
+        public static String SEARCH_CARD="http://digicardservices.in/Android/Subscribe.php";
+        public static String SUBSCRIBE_CARD="http://digicardservices.in/Android/subscribe_new_card.php";
 
 
 

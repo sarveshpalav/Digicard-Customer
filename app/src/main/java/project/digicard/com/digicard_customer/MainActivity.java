@@ -37,6 +37,8 @@ private TabsPagerAdapter adapter;
         viewPager =(ViewPager)findViewById(R.id.view_pager);
 
 
+
+
 viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 

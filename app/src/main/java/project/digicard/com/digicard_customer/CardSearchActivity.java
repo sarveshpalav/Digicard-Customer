@@ -1,23 +1,18 @@
-package project.digicard.com.digicard_customer.Fragments;
+package project.digicard.com.digicard_customer;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,22 +22,19 @@ import java.util.HashMap;
 import java.util.List;
 
 import project.digicard.com.digicard_customer.Adapters.CardsRecylerviewAdapter;
-import project.digicard.com.digicard_customer.CardSearchActivity;
+import project.digicard.com.digicard_customer.Adapters.SearchCardRecylerviewAdapter;
 import project.digicard.com.digicard_customer.Model.CONFIG;
 import project.digicard.com.digicard_customer.Model.Carddata;
-import project.digicard.com.digicard_customer.Model.EventsModel;
 import project.digicard.com.digicard_customer.Network.RequestHandler;
-import project.digicard.com.digicard_customer.R;
 
 import static project.digicard.com.digicard_customer.Model.CONFIG.MyPREFERENCES;
 import static project.digicard.com.digicard_customer.Model.CONFIG.sharedprefcustid;
 
 /**
- * Created by sarveshpalav on 24/12/16.
+ * Created by sarveshpalav on 03/05/17.
  */
-public class CardsFragment extends Fragment {
-
-JSONObject jsonObject;
+public class CardSearchActivity extends AppCompatActivity {
+    JSONObject jsonObject;
     List<Carddata> GetDataAdapter1;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager recyclerViewlayoutManager;
@@ -50,47 +42,48 @@ JSONObject jsonObject;
     ProgressBar loading;
     TextView Fetch;
     SearchView cardsearchview;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_cards);
 
         GetDataAdapter1 = new ArrayList<>();
-        sharedPreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-     //   EventBus myEventBus = EventBus.getDefault();
-        if(!EventBus.getDefault().isRegistered(this))
-        {
-            EventBus.getDefault().register(this);
-        }
+        sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
-
-        View rootView = inflater.inflate(R.layout.fragment_cards, container, false);
-        cardsearchview =(SearchView)rootView.findViewById(R.id.searchviewcards);
-        recyclerView = (RecyclerView)rootView.findViewById(R.id.cardrecylerview);
-        loading = (ProgressBar)rootView.findViewById(R.id.progressBarCard);
-        Fetch =(TextView) rootView.findViewById(R.id.fetchingcards);
+        recyclerView = (RecyclerView)findViewById(R.id.cardrecylerview);
+        loading = (ProgressBar)findViewById(R.id.progressBarCard);
+        Fetch =(TextView)findViewById(R.id.fetchingcards);
+        cardsearchview =(SearchView)findViewById(R.id.searchviewcards);
+        recyclerView = (RecyclerView)findViewById(R.id.cardrecylerview);
+        loading = (ProgressBar)findViewById(R.id.progressBarCard);
+        Fetch =(TextView)findViewById(R.id.fetchingcards);
         loading.setVisibility(View.INVISIBLE);
         Fetch.setVisibility(View.INVISIBLE);
-                recyclerViewlayoutManager = new LinearLayoutManager(getActivity());
-
-
-
-        cardsearchview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(),CardSearchActivity.class));
-            }
-        });
-
-
+        recyclerViewlayoutManager = new LinearLayoutManager(this);
 
         recyclerView.setLayoutManager(recyclerViewlayoutManager);
 
 
-                getCards();
+        getCards();
 
-        return rootView;
+
+cardsearchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
     }
 
+    @Override
+    public boolean onQueryTextChange(String newText) {
+
+        return true;
+    }
+});
+
+
+    }
 
     public void  getCards()
     {
@@ -107,7 +100,7 @@ JSONObject jsonObject;
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
-System.out.println("abc"+s);
+                System.out.println("abc"+s);
                 loading.setVisibility(View.INVISIBLE);
                 Fetch.setVisibility(View.INVISIBLE);
 
@@ -119,9 +112,11 @@ System.out.println("abc"+s);
                 RequestHandler ruc = new RequestHandler();
 
                 HashMap<String, String> data = new HashMap<String,String>();
-              data.put("B_id",params[0]);
+                data.put("card_id1","100");
+                data.put("card_id2","105");
 
-               String result =  ruc.sendPostRequest(CONFIG.GET_CARDS,data);
+
+                String result =  ruc.sendPostRequest(CONFIG.SEARCH_CARD,data);
                 try {
                     jsonObject =new JSONObject(result);
                     JSONArray contacts = jsonObject.getJSONArray("result");
@@ -149,7 +144,7 @@ System.out.println("abc"+s);
             JSONObject json = null;
             try {
                 json = array.getJSONObject(i);
-System.out.println("milind"+Integer.parseInt(json.getString("Card_id")));
+                System.out.println("milind"+Integer.parseInt(json.getString("Card_id")));
                 GetDataAdapter2.setId(Integer.parseInt(json.getString("Card_id")));
 
                 GetDataAdapter2.setName(json.getString("Card_name"));
@@ -165,10 +160,10 @@ System.out.println("milind"+Integer.parseInt(json.getString("Card_id")));
             GetDataAdapter1.add(GetDataAdapter2);
         }
 
-      final CardsRecylerviewAdapter cardsRecylerviewAdapter = new CardsRecylerviewAdapter(GetDataAdapter1, getActivity());
+        final SearchCardRecylerviewAdapter cardsRecylerviewAdapter = new SearchCardRecylerviewAdapter(GetDataAdapter1,this);
 
 
-        getActivity().runOnUiThread(new Runnable() {
+        runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 recyclerView.setAdapter(cardsRecylerviewAdapter);
@@ -176,13 +171,4 @@ System.out.println("milind"+Integer.parseInt(json.getString("Card_id")));
         });
 
     }
-@Subscribe
-    public void onEvent(EventsModel event){
-        // your implementation
-      //  Toast.makeText(getActivity(), event.getMessage(), Toast.LENGTH_SHORT).show();
-    GetDataAdapter1.clear();
-    getCards();
-    }
 }
-
-

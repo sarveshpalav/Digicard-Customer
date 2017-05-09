@@ -22,11 +22,11 @@
         android:orientation="horizontal"
         android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/name"
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/name"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
 
         <Button
@@ -35,7 +35,7 @@
             android:background="@color/green"
             android:textColor="@color/white"
             android:textSize="10sp"
-            android:text="Unsubscribe"
+            android:text="Subscribe"
             android:id="@+id/unsubscribe"
 
             android:layout_height="wrap_content" />
@@ -45,7 +45,7 @@
     <TextView
         android:textColor="@color/black"
         android:id="@+id/balance"
-
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
