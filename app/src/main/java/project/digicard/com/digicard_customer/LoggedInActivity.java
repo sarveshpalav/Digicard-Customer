@@ -10,6 +10,8 @@ import android.widget.Toast;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import java.util.ArrayList;
+
 import project.digicard.com.digicard_customer.Adapters.TabsPagerAdapterLoggedIn;
 
 /**
@@ -20,6 +22,8 @@ public class LoggedInActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private TabsPagerAdapterLoggedIn adapter;
+
+
 
 
 

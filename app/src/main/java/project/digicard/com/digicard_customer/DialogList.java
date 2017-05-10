@@ -1,6 +1,7 @@
 package project.digicard.com.digicard_customer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ public  class DialogList extends AppCompatActivity {
     JSONObject jsonObject;
     List<Carddata> GetDataAdapter1;
     SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -149,7 +151,10 @@ public  class DialogList extends AppCompatActivity {
 
                 e.printStackTrace();
             }
+
+
             GetDataAdapter1.add(GetDataAdapter2);
+            LoggedInActivity.cardli.add(GetDataAdapter2.getId());
         }
 
         final ChangeCardAdapter cardsRecylerviewAdapter = new ChangeCardAdapter(GetDataAdapter1, this);

@@ -9,9 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,6 +27,7 @@ import project.digicard.com.digicard_customer.Adapters.CardsRecylerviewAdapter;
 import project.digicard.com.digicard_customer.Adapters.SearchCardRecylerviewAdapter;
 import project.digicard.com.digicard_customer.Model.CONFIG;
 import project.digicard.com.digicard_customer.Model.Carddata;
+import project.digicard.com.digicard_customer.Model.Static;
 import project.digicard.com.digicard_customer.Network.RequestHandler;
 
 import static project.digicard.com.digicard_customer.Model.CONFIG.MyPREFERENCES;
@@ -100,7 +103,8 @@ cardsearchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
-                System.out.println("abc"+s);
+                Log.d("mnmn",s);
+                Toast.makeText(CardSearchActivity.this,s,Toast.LENGTH_LONG).show();
                 loading.setVisibility(View.INVISIBLE);
                 Fetch.setVisibility(View.INVISIBLE);
 
@@ -112,11 +116,10 @@ cardsearchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 RequestHandler ruc = new RequestHandler();
 
                 HashMap<String, String> data = new HashMap<String,String>();
-                data.put("card_id1","100");
-                data.put("card_id2","105");
 
 
-                String result =  ruc.sendPostRequest(CONFIG.SEARCH_CARD,data);
+
+                String result =  ruc.sendPostRequest("http://digicardservices.in/Android/Subscribe.php",data);
                 try {
                     jsonObject =new JSONObject(result);
                     JSONArray contacts = jsonObject.getJSONArray("result");
@@ -157,7 +160,15 @@ cardsearchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
                 e.printStackTrace();
             }
-            GetDataAdapter1.add(GetDataAdapter2);
+
+            for(i=0;i< LoggedInActivity.cardli.size();i++)
+            {
+                if(GetDataAdapter2.getId()!=LoggedInActivity.cardli.get(i))
+                {
+                    GetDataAdapter1.add(GetDataAdapter2);
+                }
+            }
+
         }
 
         final SearchCardRecylerviewAdapter cardsRecylerviewAdapter = new SearchCardRecylerviewAdapter(GetDataAdapter1,this);

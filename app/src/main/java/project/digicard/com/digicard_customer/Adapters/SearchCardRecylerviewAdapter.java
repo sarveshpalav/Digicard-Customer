@@ -64,6 +64,8 @@ public class SearchCardRecylerviewAdapter  extends RecyclerView.Adapter<SearchCa
 
         Carddata getDataAdapter1 = getCardDataAdapter.get(position);
 
+
+
         holder.NameTextView.setText(String.valueOf(getDataAdapter1.getName()));
 
         holder.IdTextView.setText(String.valueOf(getDataAdapter1.getId()));

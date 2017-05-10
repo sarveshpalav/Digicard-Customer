@@ -62,12 +62,61 @@ public class PinActivity extends AppCompatActivity {
         pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                update_balance(pin.getText().toString().trim(),bill.trim(),otp.trim(),b_id.trim());
+
+
+check_balance(b_id.trim(),bill.trim(),"100".trim());
+
             }
         });
 
 
 
+    }
+
+    public void check_balance(String B_id,final String bill,final String Card_id )
+    {
+        class updatebalance2 extends AsyncTask<String,String,String>
+        {
+            ProgressDialog loading;
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                Toast.makeText(PinActivity.this,s,Toast.LENGTH_LONG).show();
+                if(s.trim().equals("1"))
+                {
+                    update_balance(pin.getText().toString().trim(),bill.trim(),otp.trim(),b_id.trim());
+                }
+               else
+                {
+                    Toast.makeText(PinActivity.this,"Not Enough Balance",Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            protected void onPreExecute() {
+                loading = ProgressDialog.show(PinActivity.this, "Loading", null, true, true);
+                super.onPreExecute();
+            }
+
+            @Override
+            protected String doInBackground(String... params) {
+
+                HashMap<String, String> data = new HashMap<String, String>();
+
+                data.put("Bill",params[0]);
+
+                data.put("B_id",params[1]);
+                data.put("Card_id", params[2]);
+
+                RequestHandler requestHandler = new RequestHandler();
+                String res  = requestHandler.sendPostRequest(CONFIG.CHECK_BALANCE,data);
+
+                return res;
+            }
+        }
+        updatebalance2 updatebalance = new updatebalance2();
+        updatebalance.execute(bill,B_id,Card_id);
     }
 
 

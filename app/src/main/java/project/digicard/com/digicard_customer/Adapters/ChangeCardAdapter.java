@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import project.digicard.com.digicard_customer.Model.Carddata;
+import project.digicard.com.digicard_customer.Model.Static;
 import project.digicard.com.digicard_customer.R;
 
 /**
@@ -28,6 +29,7 @@ public class ChangeCardAdapter extends RecyclerView.Adapter<ChangeCardAdapter.Vi
 
         this.getCardDataAdapter = getDataAdapter;
         this.context = context;
+
     }
 
 
